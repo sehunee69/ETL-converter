@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Integrate SIS, LMS, and Accounting CSV files into one JSON export.">
+  <title>CSV to JSON · ETL Workspace</title>
+  <link rel="stylesheet" href="laser-flow.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="layout-width header-content">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>ETL Exercise</span>
+      </div>
+      <div class="student">
+        <strong>Keanu Riel B. Ensomo</strong>
+        <span>IT 3206N Grp. 1 · MW 6:00–8:30 PM</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="stage">
+    <div class="laser-flow-container" aria-hidden="true">
+      <canvas class="laser-flow-canvas"></canvas>
+    </div>
+
+    <div class="intro layout-width">
+      <h1>CSV to <span>JSON</span></h1>
+      <p>Combine student, course, and accounting records into one JSON file.</p>
+    </div>
+
+    <div class="layout-width workspace-frame">
+      <div class="workspace laser-surface">
+        <section class="panel source-panel" aria-labelledby="sources-title">
+          <div class="panel-heading">
+            <span class="panel-icon" aria-hidden="true">↥</span>
+            <div>
+              <h2 id="sources-title">Source files</h2>
+              <p>Upload one CSV from each system.</p>
+            </div>
+          </div>
+
+          <div class="source-list">
+            <label class="source-file" for="sisFile">
+              <span class="file-icon" aria-hidden="true"></span>
+              <span class="file-details">
+                <span id="sis-label" class="file-label">SIS</span>
+                <span class="file-name" data-default="Student information">Student information</span>
+              </span>
+              <span class="file-action" aria-hidden="true">Choose file</span>
+              <input type="file" id="sisFile" accept=".csv,text/csv" aria-labelledby="sis-label">
+            </label>
+
+            <label class="source-file" for="lmsFile">
+              <span class="file-icon" aria-hidden="true"></span>
+              <span class="file-details">
+                <span id="lms-label" class="file-label">LMS</span>
+                <span class="file-name" data-default="Course records">Course records</span>
+              </span>
+              <span class="file-action" aria-hidden="true">Choose file</span>
+              <input type="file" id="lmsFile" accept=".csv,text/csv" aria-labelledby="lms-label">
+            </label>
+
+            <label class="source-file" for="accountingFile">
+              <span class="file-icon" aria-hidden="true"></span>
+              <span class="file-details">
+                <span id="accounting-label" class="file-label">Accounting</span>
+                <span class="file-name" data-default="Student balances">Student balances</span>
+              </span>
+              <span class="file-action" aria-hidden="true">Choose file</span>
+              <input type="file" id="accountingFile" accept=".csv,text/csv" aria-labelledby="accounting-label">
+            </label>
+          </div>
+
+          <button id="convertBtn" class="button button-primary" type="button">
+            Generate JSON <span aria-hidden="true">→</span>
+          </button>
+          <p id="message" class="message" role="status"></p>
+        </section>
+
+        <section class="panel output-panel" aria-labelledby="output-title">
+          <div class="panel-heading">
+            <span class="panel-icon panel-icon-code" aria-hidden="true">{ }</span>
+            <div>
+              <h2 id="output-title">Integrated JSON</h2>
+              <p>Preview your merged student records.</p>
+            </div>
+          </div>
+
+          <div class="output-window">
+            <div class="output-bar">integrated_students.json</div>
+            <pre id="output" class="output" data-state="empty" tabindex="0" aria-label="JSON preview"><span class="output-empty"><span class="empty-icon" aria-hidden="true">{ }</span><strong>No JSON generated yet</strong><span>Your output will appear here.</span></span></pre>
+          </div>
+
+          <button id="downloadBtn" class="button button-secondary" type="button" disabled>
+            Download JSON <span aria-hidden="true">↓</span>
+          </button>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer layout-width">
+    CSV files are processed in your browser.
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="laser-flow.js"></script>
+</body>
+</html>
